@@ -11,7 +11,7 @@ Route::get('/user', function (Request $request) {
 
 
 
-Route::prefix('v1')->group(function () {
+Route::prefix('v1')->middleware(['throttle:api'])->group(function () {
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('posts', PostController::class);
 });
